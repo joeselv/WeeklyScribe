@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+body {
+    background-color: #fff5ed;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #fcebd9;
+    width: 300px;
+    padding: 20px;
+    border-right: 2px solid #ccc;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    color: #333;
+}
+
+.sidebar li:hover {
+    color: #007BFF;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.sidebar {
+    animation: slideIn 0.5s ease-out;
+}
+
+.content {
+    flex: 1;
+    padding: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+    animation: fadeInFromTop 1s ease-out;
+}
+
+@keyframes fadeInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lightbulb-icon {
+    margin-left: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+}
+
+.ql-container.ql-snow {
+    border: 2px solid black;
+    border-top: 2px solid black !important;
+    border-radius: 10px;
+}
+
+.ql-toolbar.ql-snow {
+    margin-bottom: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
