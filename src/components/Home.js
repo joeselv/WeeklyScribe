@@ -23,14 +23,19 @@ const Home = () => {
             id: Date.now(),
             date: new Date().toLocaleDateString(),
             content: text, 
+            prompt: prompt,
         };
     
-        const entryIndex = entries.findIndex(entry => entry.content === text);
+        const entryIndex = entries.findIndex(entry => entry.prompt === prompt);
     
         let updatedEntries;
         if (entryIndex !== -1) {
-            updatedEntries = [...entries];
-            updatedEntries[entryIndex] = newEntry;
+            if (window.confirm('It looks like an entry already exists for this week. Do you want to overwrite the existing one?')) {
+                updatedEntries = [...entries];
+                updatedEntries[entryIndex] = newEntry;
+            } else {
+                return;
+            }
         } else {
             updatedEntries = [newEntry, ...entries];
         }
