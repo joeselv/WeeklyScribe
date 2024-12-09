@@ -7,6 +7,7 @@ import lightbulb from './resources/lightbulb.svg';
 const Home = () => {
     const [text, setText] = useState('');
     const [entries, setEntries] = useState([]);
+    const [prompt, setPrompt] = useState('Think about the last creative project you completed. What were the biggest obstacles you faced, and how did you overcome them?');
 
     useEffect(() => {
         const savedEntries = JSON.parse(localStorage.getItem('journalEntries')) || [];
@@ -23,13 +24,31 @@ const Home = () => {
             date: new Date().toLocaleDateString(),
             content: text, 
         };
-
-        const updatedEntries = [newEntry, ...entries];
+    
+        const entryIndex = entries.findIndex(entry => entry.content === text);
+    
+        let updatedEntries;
+        if (entryIndex !== -1) {
+            updatedEntries = [...entries];
+            updatedEntries[entryIndex] = newEntry;
+        } else {
+            updatedEntries = [newEntry, ...entries];
+        }
+    
         setEntries(updatedEntries);
         localStorage.setItem('journalEntries', JSON.stringify(updatedEntries));
-
+    
         setText('');
     };
+
+    const clearEntries = () => {
+        setEntries([]);
+        localStorage.removeItem('journalEntries');
+    };
+
+    const loadEntry = (entryContent) => {
+        setText(entryContent);
+    };    
 
     return (
         <div className="home-container">
@@ -37,20 +56,23 @@ const Home = () => {
                 <h2>Entries</h2>
                 <ul>
                     {entries.map((entry) => (
-                        <li key={entry.id}>
-                            <strong>{entry.date}</strong>: {"Think about"}...
+                        <li key={entry.id} onClick={() => loadEntry(entry.content)}>
+                            <strong>{entry.date}</strong>: {prompt}
                         </li>
                     ))}
                 </ul>
+                <button onClick={clearEntries} className='btnHome btnHome-background-slide'>
+                    Clear All
+                </button>
             </div>
             
             <div className="content">
                 <h1 style={{ fontSize: '2em' }}>
                     <img src={lightbulb} alt="Lightbulb" className="lightbulb-icon" />
-                    Think about the last creative project you completed. What were the biggest obstacles you faced, and how did you overcome them?
+                    {prompt}
                 </h1>
                 <ReactQuill value={text} onChange={handleChange} style={{ height: '400px' }} />
-                <button onClick={saveEntry} style={{ marginTop: '100px' }}>
+                <button onClick={saveEntry} className='btnHome btnHome-background-slide'>
                     Save Entry
                 </button>
             </div>
