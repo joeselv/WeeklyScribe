@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
-import './Home.css';
+import './Editor.css';
 import lightbulb from './resources/lightbulb.svg';
 
-const Home = () => {
+const Editor = () => {
     const [text, setText] = useState('');
     const [entries, setEntries] = useState([]);
     const [prompt, setPrompt] = useState('Think about the last creative project you completed. What were the biggest obstacles you faced, and how did you overcome them?');
@@ -56,7 +56,7 @@ const Home = () => {
     };    
 
     return (
-        <div className="home-container">
+        <div className="editor-container">
             <div className="sidebar">
                 <h2>Entries</h2>
                 <ul>
@@ -66,7 +66,7 @@ const Home = () => {
                         </li>
                     ))}
                 </ul>
-                <button onClick={clearEntries} className='btnHome btnHome-background-slide'>
+                <button onClick={clearEntries} className='btnEditor btnEditor-background-slide'>
                     Clear All
                 </button>
             </div>
@@ -77,7 +77,7 @@ const Home = () => {
                     {prompt}
                 </h1>
                 <ReactQuill value={text} onChange={handleChange} style={{ height: '400px' }} />
-                <button onClick={saveEntry} className='btnHome btnHome-background-slide'>
+                <button onClick={saveEntry} className='btnEditor btnEditor-background-slide'>
                     Save Entry
                 </button>
             </div>
@@ -85,4 +85,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Editor;
