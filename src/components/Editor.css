@@ -43,12 +43,12 @@ body {
     border: 1px solid #ccc;
     border-radius: 20px; 
     background-color: #ffffff;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar li:hover {
     color: #007BFF;
-    background-color: #f0f0f0; /* Change background color on hover */
+    background-color: #f0f0f0;
 }
 
 @keyframes slideIn {

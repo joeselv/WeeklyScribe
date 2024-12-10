@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+body {
+    background-color: #fff5ed;
+    font-family: 'Open Sans', sans-serif;
+}
+
 .home-message h1 {
     font-family: 'Open Sans', sans-serif;
     font-size: 4rem;
@@ -11,6 +18,32 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: fadeInFromTop 1s ease-out;
+}
+
+.weekly-prompt {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    color: black;
+    padding-left: 200px;
+    padding-top: 20px;
+    margin: 0;
+    animation: fadeInFromTop 1s ease-out;
+}
+
+.weekly-prompt .unbold {
+    font-weight: normal;
+}
+
+@keyframes fadeInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .carousel {
@@ -26,18 +59,51 @@
 .carousel-item {
     flex: 0 0 auto;
     scroll-snap-align: start;
-    background: linear-gradient(to right, #fdc3ba, #ffb199); /* Lightened gradient background */
-    border-radius: 10px;
+    background: linear-gradient(to right, #fdc3ba, #ffb199);
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px;
     padding: 20px;
-    min-width: 300px;
-    max-width: 300px;
+    min-width: 250px;
+    max-width: 250px;
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
+    animation: fadeInFromTop 1s ease-out;
 }
 
 .carousel-item:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.carousel-item.new-entry {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    background: linear-gradient(to right, #cfcfcf, #bdbdbd);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.carousel-item.new-entry img {
+    width: 100px;
+    height: 100px;
+}
+
+.carousel-item.new-entry.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.carousel-item.new-entry.disabled:hover {
+    transform: none;
+    box-shadow: none;
 }

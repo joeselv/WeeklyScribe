@@ -3,9 +3,11 @@ import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import './Editor.css';
 import lightbulb from './resources/lightbulb.svg';
+import { useLocation } from 'react-router-dom';
 
 const Editor = () => {
-    const [text, setText] = useState('');
+    const location = useLocation();
+    const [text, setText] = useState(location.state?.entryContent || '');
     const [entries, setEntries] = useState([]);
     const [prompt, setPrompt] = useState('Think about the last creative project you completed. What were the biggest obstacles you faced, and how did you overcome them?');
 
@@ -42,8 +44,6 @@ const Editor = () => {
     
         setEntries(updatedEntries);
         localStorage.setItem('journalEntries', JSON.stringify(updatedEntries));
-    
-        setText('');
     };
 
     const clearEntries = () => {
@@ -51,17 +51,13 @@ const Editor = () => {
         localStorage.removeItem('journalEntries');
     };
 
-    const loadEntry = (entryContent) => {
-        setText(entryContent);
-    };    
-
     return (
         <div className="editor-container">
             <div className="sidebar">
                 <h2>Entries</h2>
                 <ul>
                     {entries.map((entry) => (
-                        <li key={entry.id} onClick={() => loadEntry(entry.content)}>
+                        <li key={entry.id} onClick={() => setText(entry.content)}>
                             <strong>{entry.date}</strong>: {prompt}
                         </li>
                     ))}
