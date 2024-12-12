@@ -107,3 +107,76 @@ body {
     transform: none;
     box-shadow: none;
 }
+
+.explore-more {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    color: black;
+    padding-left: 200px;
+    padding-top: 20px;
+    margin: 0;
+    animation: fadeInFromTop 1s ease-out;
+}
+
+.explore-more button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.explore-more button:hover {
+    background-color: #feb47b;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInFromTop 0.5s ease-out;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeInFromTop 0.5s ease-out;
+}
+
+.popup-content select {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.popup-content button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size: 1rem;
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.popup-content button:hover {
+    background-color: #feb47b;
+}
